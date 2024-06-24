@@ -58,6 +58,14 @@ app_license = "mit"
 # Jinja
 # ----------
 
+jinja = {
+    "methods": [
+        "signum_fire.jinja.get_company_bank_address",
+        "signum_fire.jinja.get_supplier_bank_address",
+        "signum_fire.jinja.get_unique_hsc_code_of_item"
+    ]
+}
+
 # add methods and filters to jinja environment
 # jinja = {
 # 	"methods": "signum_fire.utils.jinja_methods",
