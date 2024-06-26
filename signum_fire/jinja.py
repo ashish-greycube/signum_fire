@@ -16,23 +16,3 @@ def get_supplier_bank_address(doc):
     bank_address_name=get_default_address('Bank Account',supplier_bank[0].name)
     supplier_address = render_address(bank_address_name)
     return supplier_address
-
-@frappe.whitelist()
-def get_unique_hsc_code_of_item(parent, hsn_code):
-    po_items = frappe.get_list('Purchase Order Item', parent_doctype='Purchase Order', 
-						filters={'parent': parent}, 
-						fields=['description', 'gst_hsn_code', 'qty'])
-    unique_hsn_code = []
-    for item in po_items:
-        if item.gst_hsn_code not in unique_hsn_code:
-            unique_hsn_code.append(item.gst_hsn_code)	
-
-    print(unique_hsn_code, '---unique_hsn_code')
-    decs = []
-    for hsn in unique_hsn_code:
-        if hsn == hsn_code:
-            for values in po_items:
-                decs.append(values.description)
-    
-    print(decs, '--------desc')
-    return decs
