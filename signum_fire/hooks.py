@@ -61,7 +61,8 @@ app_license = "mit"
 jinja = {
     "methods": [
         "signum_fire.jinja.get_company_bank_address",
-        "signum_fire.jinja.get_supplier_bank_address"
+        "signum_fire.jinja.get_supplier_bank_address",
+        "signum_fire.jinja.get_address"
     ]
 }
 
