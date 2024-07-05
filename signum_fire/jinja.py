@@ -23,5 +23,8 @@ def get_address(address, type=None):
 		fields = ["address_title", "address_line1", "address_line2", "city", "county", "state", "country"]
 	elif type == 'pin':
 		fields = ["address_title", "address_line1", "address_line2", "city", "county", "state", "country", "pincode", "phone",]
+	
+	elif type == 'not-title':
+		fields = ["address_line1", "address_line2", "city", "county", "state", "country"]
 		
 	return ", ".join(doc.get(d) for d in fields if doc.get(d))
