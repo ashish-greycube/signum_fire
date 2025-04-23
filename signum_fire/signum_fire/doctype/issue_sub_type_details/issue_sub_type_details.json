@@ -1,0 +1,35 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-23 10:05:57.016751",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "issue_sub_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "issue_sub_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Issue Sub Type",
+   "options": "Issue Sub Type",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-23 10:12:02.540787",
+ "modified_by": "Administrator",
+ "module": "Signum Fire",
+ "name": "Issue Sub Type Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
