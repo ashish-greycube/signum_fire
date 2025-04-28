@@ -11,5 +11,9 @@ frappe.ui.form.on("Issue",{
             }
         })
 
+    },
+
+    issue_type: function(frm){
+        frm.set_value("custom_issue_sub_type", "")
     }
 })
