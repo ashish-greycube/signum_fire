@@ -1,0 +1,169 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:EMP-WRN-{####}",
+ "creation": "2025-08-25 13:19:34.891346",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_details_section",
+  "employee",
+  "employee_name",
+  "salutation",
+  "cell_number",
+  "column_break_gcpc",
+  "date",
+  "current_address",
+  "section_break_jmkc",
+  "warning_type",
+  "time",
+  "previous_letter_number",
+  "previous_letter_date",
+  "particulars_of_act_done",
+  "column_break_gvnb",
+  "warning_date",
+  "reporting_date",
+  "number_of_over_staying_leave",
+  "details"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  },
+  {
+   "fieldname": "column_break_gcpc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.cell_number",
+   "fieldname": "cell_number",
+   "fieldtype": "Data",
+   "label": "Cell Number",
+   "options": "Phone"
+  },
+  {
+   "fetch_from": "employee.current_address",
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Current Address"
+  },
+  {
+   "fieldname": "section_break_jmkc",
+   "fieldtype": "Section Break",
+   "label": "Warning Details"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "depends_on": "eval:in_list([\"First Warning Letter For Late Coming\", \"Warning Letter For Being Found Drunk While On Duty\"], doc.warning_type)",
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "depends_on": "eval:in_list([\"First Letter Of Warning For Neglecting The Duties\", \"Warning Letter For Violating Instructions Of The Superiors\", \"Warning Letter to An Employee For Loitering In The Department\"], doc.warning_type)",
+   "fieldname": "details",
+   "fieldtype": "Text",
+   "label": "Details"
+  },
+  {
+   "depends_on": "eval:in_list([\"Warning Letter For Over Staying Leave\"], doc.warning_type)",
+   "fieldname": "number_of_over_staying_leave",
+   "fieldtype": "Int",
+   "label": "Number Of Over Staying Leave"
+  },
+  {
+   "depends_on": "eval:in_list([\"Warning Letter to An Employee For Loitering In The Department\"], doc.warning_type)",
+   "fieldname": "particulars_of_act_done",
+   "fieldtype": "Small Text",
+   "label": "Particulars Of Act Done"
+  },
+  {
+   "fieldname": "warning_type",
+   "fieldtype": "Select",
+   "label": "Warning Type",
+   "options": "\nWarning Letter for Inefficiency\nWarning Letter For Insubordination\nFirst Warning Letter For Late Coming\nWarning Letter For Over Staying Leave\nWarning Letter For Absence From Duties\nFirst Letter Of Warning For Neglecting The Duties\nWarning Letter For Being Found Drunk While On Duty\nSecond Letter Of Warning For Neglecting The Duties\nSecond Letter For Breach Of Discipline Coming Late\nWarning Letter For Absence Without Obtaining Leave\nWarning Letter to An Employee Who Fails To Wear Uniform\nWarning Letter For Violating Instructions Of The Superiors\nWarning Letter to An Employee For Loitering In The Department\nWarning to a Worker Who Is Found To Defy The Instructions To Work During Night Shift\nNotice to An Employee Absenting For a Specified Period Of Eight Days Continuously Without Sanction Of Leave"
+  },
+  {
+   "fieldname": "column_break_gvnb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:in_list([\"Second Letter Of Warning For Neglecting The Duties\", \"Second Letter For Breach Of Discipline Coming Late\"], doc.warning_type)\n",
+   "fieldname": "previous_letter_number",
+   "fieldtype": "Link",
+   "label": "Previous Letter Number",
+   "options": "Employee Warning"
+  },
+  {
+   "depends_on": "eval:in_list([\"Second Letter Of Warning For Neglecting The Duties\", \"Second Letter For Breach Of Discipline Coming Late\"], doc.warning_type)\n",
+   "fieldname": "previous_letter_date",
+   "fieldtype": "Date",
+   "label": "Previous Letter Date"
+  },
+  {
+   "depends_on": "eval:in_list([\"First Warning Letter For Late Coming\", \"Notice to An Employee Absenting For a Specified Period Of Eight Days Continuously Without Sanction Of Leave\", \"Second Letter For Breach Of Discipline Coming Late\", \"Warning Letter For Absence From Duties\", \"Warning Letter For Absence Without Obtaining Leave\", \"Warning Letter to An Employee For Loitering In The Department\", \"Warning Letter For Being Found Drunk While On Duty\", \"Warning to a Worker Who Is Found To Defy The Instructions To Work During Night Shift\"], doc.warning_type)",
+   "fieldname": "warning_date",
+   "fieldtype": "Date",
+   "label": "Warning Date"
+  },
+  {
+   "depends_on": "eval:doc.warning_type == \"Notice to An Employee Absenting For a Specified Period Of Eight Days Continuously Without Sanction Of Leave\"",
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "label": "Reporting Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-26 15:28:06.090843",
+ "modified_by": "Administrator",
+ "module": "Signum Fire",
+ "name": "Employee Warning",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
