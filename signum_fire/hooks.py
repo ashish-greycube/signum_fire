@@ -126,6 +126,7 @@ jinja = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
+after_migrate = "signum_fire.migrations.after_migrate"
 # Document Events
 # ---------------
 # Hook on document methods and events

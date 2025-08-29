@@ -20,6 +20,7 @@
   "previous_letter_number",
   "previous_letter_date",
   "particulars_of_act_done",
+  "print",
   "column_break_gvnb",
   "warning_date",
   "reporting_date",
@@ -137,12 +138,18 @@
    "fieldname": "reporting_date",
    "fieldtype": "Date",
    "label": "Reporting Date"
+  },
+  {
+   "depends_on": "eval:doc.warning_type != \"\";",
+   "fieldname": "print",
+   "fieldtype": "Button",
+   "label": "Print"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-26 15:28:06.090843",
+ "modified": "2025-08-29 11:48:43.745213",
  "modified_by": "Administrator",
  "module": "Signum Fire",
  "name": "Employee Warning",
