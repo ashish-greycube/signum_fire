@@ -14,6 +14,8 @@ class EmployeeWarning(Document):
 def open_pdf(docname, print_format):
 	doc = frappe.get_doc("Employee Warning", docname)
 	pdf = get_pdf_link(doc.doctype, doc.name, print_format, no_letterhead=0)
+	pdf = pdf + "&letterhead=Letterhead-General"
+	print(pdf)
 	return pdf
 	
 @frappe.whitelist()
