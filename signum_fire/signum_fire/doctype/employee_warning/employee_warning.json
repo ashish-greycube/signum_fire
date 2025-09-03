@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:EMP-WRN-{####}",
+ "autoname": "naming_series:naming_series",
  "creation": "2025-08-25 13:19:34.891346",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "employee_details_section",
   "employee",
   "employee_name",
@@ -25,7 +26,8 @@
   "warning_date",
   "reporting_date",
   "number_of_over_staying_leave",
-  "details"
+  "details",
+  "amended_from"
  ],
  "fields": [
   {
@@ -83,7 +85,7 @@
   {
    "depends_on": "eval:in_list([\"First Warning Letter For Late Coming\", \"Warning Letter For Being Found Drunk While On Duty\"], doc.warning_type)",
    "fieldname": "time",
-   "fieldtype": "Time",
+   "fieldtype": "Data",
    "label": "Time"
   },
   {
@@ -144,16 +146,32 @@
    "fieldname": "print",
    "fieldtype": "Button",
    "label": "Print"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Warning",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-08-29 11:48:43.745213",
+ "modified": "2025-09-03 11:49:14.070197",
  "modified_by": "Administrator",
  "module": "Signum Fire",
  "name": "Employee Warning",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

@@ -17,7 +17,7 @@ frappe.ui.form.on("Employee Warning", {
     },
 
     print(frm) {
-        if (frm.is_dirty()){
+        if (frm.is_dirty()) {
             frappe.throw("Please Save Form To Open PDF")
         }
 
@@ -38,12 +38,30 @@ frappe.ui.form.on("Employee Warning", {
 
 
     setup(frm) {
-        frm.set_query("previous_letter_number", function() {
+        frm.set_query("previous_letter_number", function () {
+
+            if (frm.doc.warning_type == "Second Letter For Breach Of Discipline Coming Late") {
+                warning_type_selected = "First Warning Letter For Late Coming"
+            }
+            else if (frm.doc.warning_type == 'Second Letter Of Warning For Neglecting The Duties') {
+                warning_type_selected = 'First Letter Of Warning For Neglecting The Duties'
+            }
+
             return {
                 filters: {
-                    'employee' : frm.doc.employee
+                    'employee': frm.doc.employee,
+                    'warning_type': warning_type_selected
                 }
             }
         })
+    },
+
+    previous_letter_number(frm) {
+        if (frm.doc.previous_letter_number != null) {
+            frappe.db.get_value("Employee Warning", frm.doc.previous_letter_number, "warning_date").then(res => {
+                console.log(res)
+                frm.set_value("previous_letter_date", res.message.warning_date)
+            })
+        }
     }
 });

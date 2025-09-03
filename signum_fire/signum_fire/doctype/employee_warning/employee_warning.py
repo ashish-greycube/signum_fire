@@ -40,6 +40,7 @@ def validate_warning_selection(self):
 			filters = {
 				"employee" : self.employee,
 				"warning_type" : ["in", ["First Letter Of Warning For Neglecting The Duties", "Second Letter Of Warning For Neglecting The Duties"]],
+				"docstatus" : 1
 			},
 			fields = ["name"]
 		)
@@ -59,7 +60,7 @@ def validate_warning_selection(self):
 			frappe.throw("First and Second Warnings already created.")
 
 		is_one_created = frappe.db.get_value("Employee Warning", {'employee':self.employee, 'warning_type':'First Letter Of Warning For Neglecting The Duties'}, ['name'])
-		if is_one_created != None: 
+		if is_one_created != None and is_one_created != self.name: 
 			frappe.throw("First Warning Letter is already created. Cannot create it again.")
 
 	elif selected_warning == "Second Letter For Breach Of Discipline Coming Late":
@@ -79,6 +80,7 @@ def validate_warning_selection(self):
 			filters = {
 				"employee" : self.employee,
 				"warning_type" : ["in", ["First Warning Letter For Late Coming", "Second Letter For Breach Of Discipline Coming Late"]],
+				"docstatus" : 1
 			},
 			fields = ["name"]
 		)
@@ -99,5 +101,5 @@ def validate_warning_selection(self):
 
 
 		is_one_created = frappe.db.get_value("Employee Warning", {'employee':self.employee, 'warning_type':'First Warning Letter For Late Coming'}, ['name'])
-		if  is_one_created != None: 
+		if  is_one_created != None and is_one_created != self.name: 
 			frappe.throw("First Warning Letter is already created. Cannot create it again.")
