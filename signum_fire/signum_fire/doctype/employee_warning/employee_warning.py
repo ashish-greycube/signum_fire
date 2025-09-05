@@ -11,6 +11,13 @@ class EmployeeWarning(Document):
 		validate_warning_selection(self)
 
 @frappe.whitelist()
+def set_previous_letter_and_date(employee, warning_type, docstatus, self):
+	self = frappe.parse_json(self)
+	previous_letter = frappe.db.get_value("Employee Warning", {'employee': employee, 'warning_type' : warning_type, 'docstatus' : docstatus}, "name")
+	self.previous_letter_number = previous_letter
+	return self
+	
+@frappe.whitelist()
 def open_pdf(docname, print_format):
 	doc = frappe.get_doc("Employee Warning", docname)
 	pdf = get_pdf_link(doc.doctype, doc.name, print_format, no_letterhead=0)
