@@ -50,10 +50,18 @@ frappe.ui.form.on("Employee Warning", {
             return {
                 filters: {
                     'employee': frm.doc.employee,
-                    'warning_type': warning_type_selected
+                    'warning_type': warning_type_selected,
+                    'docstatus' : 1
                 }
             }
         })
+
+        if (frm.doc.docstatus == 2) {
+            frm.set_df_property("print", "hidden", 1)
+        }
+        else if (frm.doc.docstatus != 2) {
+            frm.set_df_property("print", "hidden", 0)
+        }
     },
 
     previous_letter_number(frm) {
