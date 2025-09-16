@@ -21,6 +21,7 @@
   "previous_letter_number",
   "previous_letter_date",
   "particulars_of_act_done",
+  "seatmachine_of_shrismt",
   "print",
   "column_break_gvnb",
   "warning_date",
@@ -161,13 +162,20 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series"
+  },
+  {
+   "depends_on": "eval:in_list([\"Warning Letter to An Employee For Loitering In The Department\"], doc.warning_type)",
+   "fieldname": "seatmachine_of_shrismt",
+   "fieldtype": "Link",
+   "label": "Seat/Machine of Shri/Smt",
+   "options": "Employee"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-09-03 11:49:14.070197",
+ "modified": "2025-09-16 10:27:47.994219",
  "modified_by": "Administrator",
  "module": "Signum Fire",
  "name": "Employee Warning",
